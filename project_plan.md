@@ -17,7 +17,7 @@ How fast are average shipping times?
 I will be using the Northwind database: https://github.com/pthom/northwind_psql
 
 ## Business Process Modelling
-TBD
+In progress: ERD to be added.
 
 ## Solution Architecture
 ![plot](./dec_northwind_solution_architecture.png)
