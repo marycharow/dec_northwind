@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: snp_customer_customer_type
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: SNAPSHOT

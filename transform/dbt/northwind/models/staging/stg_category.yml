@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: stg_category
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: STAGING
