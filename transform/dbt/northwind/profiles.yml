@@ -1,0 +1,23 @@
+northwind:
+  outputs:
+    prod:
+      type: snowflake
+      threads: 1
+      account: qg94207.ca-central-1.aws
+      user: dbt
+      password: ddbt
+      role:  DBT_RW
+      warehouse:  ETL
+      database: PROD
+      schema: prod
+    dev:
+      type: snowflake
+      threads: 1
+      account: qg94207.ca-central-1.aws
+      user: dbt
+      password: ddbt
+      role:  DBT_RW
+      warehouse:  ETL
+      database: DEV
+      schema: dev
+  target: dev

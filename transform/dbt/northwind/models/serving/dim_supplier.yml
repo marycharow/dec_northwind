@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_supplier
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+    columns:
+      - name: supplier_key
+        description: The surrogate key of the supplier
+        tests:
+          - unique
+          - not_null
+          
+      - name: supplier_id
+        description: The natural key of the supplier
+      
+      - name: company_name
+        description: Name of supplier company
+
+      - name: contact_name
+        description: Name of primary business contact at the supplier company
+      
+      - name: contact_title
+        description: Title of primary business contact at the supplier company
+
+      - name: address
+        description: Supplier company address
+
+      - name: city
+        description: Supplier company city
+
+      - name: region
+        description: Supplier company region
+
+      - name: postal_code
+        description: Supplier company postal_code
+
+      - name: country
+        description: Supplier company postal_code
+
+      - name: phone
+        description: Supplier company phone number

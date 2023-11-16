@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_customer
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+    columns:
+      - name: customer_key
+        description: The surrogate key of the customer
+        tests:
+          - unique
+          - not_null
+          
+      - name: customer_id
+        description: The natural key of the customer
+      
+      - name: company_name
+        description: Name of client company
+
+      - name: contact_name
+        description: Name of primary business contact at the client company
+      
+      - name: contact_title
+        description: Title of primary business contact at the client company
+
+      - name: address
+        description: Client company address
+
+      - name: city
+        description: Client company city
+
+      - name: region
+        description: Client company region
+
+      - name: postal_code
+        description: Client company postal_code
+
+      - name: phone
+        description: Client company phone number

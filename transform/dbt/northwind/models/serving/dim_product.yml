@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_product
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+    columns:
+      - name: product_key
+        description: The surrogate key of the product
+        tests:
+          - unique
+          - not_null
+          
+      - name: product_id
+        description: The natural key of the product
+      
+      - name: product_name
+
+      - name: category_name
+
+      - name: reorder_level
+        description: Quantity of units on hand at which a replenishment order should be made
+
+      - name: discontinued
+        description: Flag for whether the product has been discontinued
+
+      - name: units_in_stock
+        description: Quantity of units on hand
+
+      - name: units_on_order
+        description: Quantity of units in most recent order
+
+      - name: supplier_key
+        description: Surrogate key of supplier company

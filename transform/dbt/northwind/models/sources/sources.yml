@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: airbyte
+    database: airbyte_database
+    schema: airbyte_schema
+    tables:
+      - name: employees
+      - name: employee_territories
+      - name: categories
+      - name: customer_customer_type
+      - name: customer_type
+      - name: customers
+      - name: order_details
+      - name: orders
+      - name: products
+      - name: region
+      - name: shippers
+      - name: suppliers
+      - name: territories
+      - name: us_states
