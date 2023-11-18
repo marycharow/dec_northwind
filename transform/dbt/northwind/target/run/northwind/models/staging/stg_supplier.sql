@@ -2,7 +2,7 @@
   
     
 
-        create or replace transient table DEV.STAGING.stg_supplier
+        create or replace transient table PROD.STAGING.stg_supplier
          as
         (
 select supplier_id,

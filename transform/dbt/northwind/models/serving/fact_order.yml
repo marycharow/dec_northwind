@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: fact_order
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+      materialized: table
+    columns:
+      - name: order_key
+        description: The surrogate key of the order line
+        tests:
+          - unique
+          - not_null
+          
+      - name: product_key
+        description: The surrogate key of the product
+      
+      - name: customer_key
+        description: The surrogate key of the customer
+
+      - name: order_id
+        description: The natural key of the order
+      
+      - name: product_id
+        description: The natural key of the product
+
+      - name: unit_price
+        description: Unit price of the product
+
+      - name: quantity
+        description: Quantity of product ordered
+
+      - name: normal_retail_value
+        description: Revenue of all units of product ordered before discount
+
+      - name: discount
+        description: Discount applied to order product
+
+      - name: discount_value
+        description: Discount value applied to order product in dollars
+
+      - name: actual_retail_value
+        description: Revenue of all units of product ordered after discount
+
+      - name: price_type
+        description: Flag for whether products were sold at regular or discounted price
+
+      - name: order_date
+        description: Date order was made
+      
+      - name: shipped_date
+        description: Date order was shipped
+
+      - name: required_date
+        description: Date that client requires the order by
+      
+      - name: days_to_ship
+        description: Days between order and ship
+      
+      - name: cutomer_tier_key
+        description: Surrogate key of customer tier
+      
+      - name: customer_tier
+        description: Customer tier of customer when order was placed

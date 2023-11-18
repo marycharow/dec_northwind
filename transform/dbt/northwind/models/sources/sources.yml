@@ -19,3 +19,15 @@ sources:
       - name: suppliers
       - name: territories
       - name: us_states
+  - name: prod_staging
+    database: prod
+    schema: staging
+    tables:
+      - name: stg_category
+      - name: stg_customer_customer_type
+      - name: stg_customer_type
+      - name: stg_customer
+      - name: stg_order_detail
+      - name: stg_order
+      - name: stg_product
+      - name: stg_supplier

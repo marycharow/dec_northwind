@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: preset_obt
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+      materialized: table
+    

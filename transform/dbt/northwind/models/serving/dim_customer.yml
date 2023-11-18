@@ -5,6 +5,7 @@ models:
     config: 
       database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
       schema: CURATED
+      materialized: table
     columns:
       - name: customer_key
         description: The surrogate key of the customer
