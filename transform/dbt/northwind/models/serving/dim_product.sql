@@ -1,10 +1,21 @@
 with stg_product as (
-    select *
+    select cast(product_id as integer) as product_id,
+    product_name,
+    cast(unit_price as numeric(38,2)) as unit_price,
+    cast(reorder_level as integer) as reorder_level,
+    cast(discontinued as integer) as discontinued,
+    cast(category_id as integer) as category_id,
+    cast(units_in_stock as integer) as units_in_stock,
+    cast(units_on_order as integer) as units_on_order,
+    quantity_per_unit,
+    cast(supplier_id as integer) as supplier_id
     from {{ ref('stg_product') }}
 ),
 
 stg_category as(
-    select *
+    select cast(category_id as integer) as category_id,
+    category_name,
+    description
     from {{ ref('stg_category') }}
 )
 

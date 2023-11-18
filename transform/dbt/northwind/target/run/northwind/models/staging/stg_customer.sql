@@ -2,7 +2,7 @@
   
     
 
-        create or replace transient table DEV.STAGING.stg_customer
+        create or replace transient table PROD.STAGING.stg_customer
          as
         (
 select customer_id,

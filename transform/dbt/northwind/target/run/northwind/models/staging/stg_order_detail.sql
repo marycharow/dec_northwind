@@ -2,14 +2,15 @@
   
     
 
-        create or replace transient table DEV.STAGING.stg_order_detail
+        create or replace transient table PROD.STAGING.stg_order_detail
          as
         (
 select order_id,
 product_id,
 unit_price,
 quantity,
-discount
+discount,
+_ab_cdc_updated_at as updated_at
 from airbyte_database.airbyte_schema.order_details
         );
       

@@ -7,5 +7,6 @@ select order_id,
 product_id,
 unit_price,
 quantity,
-discount
+discount,
+_ab_cdc_updated_at as updated_at
 from {{ source('airbyte', 'order_details') }}

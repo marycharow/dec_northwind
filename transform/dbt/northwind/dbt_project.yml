@@ -34,10 +34,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   # materialize models in the prod directory as tables in PROD database
   serving:
-    +database: NORTHWIND
+    +database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
     +schema: CURATED
     +materialized: table
   staging:
-    +database: NORTHWIND
-    +schema: CURATED
+    +database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+    +schema: STAGING
     +materialized: table

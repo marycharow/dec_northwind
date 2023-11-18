@@ -2,7 +2,7 @@
   
     
 
-        create or replace transient table DEV.STAGING.stg_product
+        create or replace transient table PROD.STAGING.stg_product
          as
         (
 select product_id,

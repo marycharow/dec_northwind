@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_customer_tier
+    config: 
+      database: "{{ 'PROD' if target.name == 'prod' else 'DEV' }}"
+      schema: CURATED
+      materialized: table
+    columns:
+      - name: customer_tier_key
+        description: The surrogate key of the customer tier record
+        tests:
+          - unique
+          - not_null
+          
+      - name: customer_id
+        description: The natural key of the customer
+
+      - name: customer_tier_id
+        description: The natural key of the customer tier
+        tests:
+          - accepted_values:
+              values: [1, 2]
+      
+      - name: customer_tier
+        description: Description of customer tier
+        tests:
+          - accepted_values:
+              values: ['Basic Tier', 'Premium Tier']
+
+      - name: valid_from
+        description: Starting timestamp of customer being in that tier
+        tests:
+          - not_null
+      
+      - name: valid_to
+        description: End timestamp of customer being in that tier
