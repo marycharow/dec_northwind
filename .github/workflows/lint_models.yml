@@ -35,5 +35,4 @@ jobs:
           pip install -r ./transform/dbt/requirements.txt
 
       - name: Run linting checks. Exit code 1 if linter failed
-        run: |
-          bash ./bin/linter.sh
+        run: sqlfluff lint models
