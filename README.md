@@ -19,7 +19,6 @@ An RDS instance as shown was created to host the PostgreSQL database.
 ### Enabling CDC on RDS database
 Because the Northwind datasets did not have a natural cursor field, CDC was enabled to allow for incremental syncing. This initially caused some hiccups as enabling replication on an RDS database requires slightly different commands, as found <a href="https://stackoverflow.com/questions/61912680/postgres-aws-rds-failed-to-create-replication-users">here</a> - thanks to the instructors for helping troubleshoot this!
 
-
 ### Data Ingestion using Airbyte
 Airbyte was used to ingest data from PostgreSQL to Snowflake warehouse.
 
@@ -41,12 +40,14 @@ The replication is incremental as pictured in this Airbyte screenshot, using the
 2. An additional singular test was created called discount_range and is stored within the tests folder. As the discount column in the order detail table should only be a value within 0 and 1 (represents the percent discount given in decimal form), the test looks for any records where the discount record is below 0 or above 1.
 
 ### Workflows
-We configured a Job in Databricks to run all required notebooks, including needed dependencies. 
-The job is scheduled to run automatically on Mondays at 9:30am EST.
+Airflow was used to orchestrate the Airbyte sync and dbt project run.
 
-![plot](./dec_project2_workflow.png)
+This required the following setup in Airflow:
+1. An Airbyte connection
+2. Airflow variables to store the Snowflake dbt user login credentials
 
-## 5. VISUALIZATION
+
+### VISUALIZATION
 A Preset dashboard was created to visualize key metrics. 
 
 ![plot](./readme_images/dec_northwind_preset.png)
@@ -59,7 +60,7 @@ This required the creation of some metrics created in the semantic layer includi
 - total units sold
 - percent of orders sold on discount
 
-## 6. NEXT STEPS/BACKLOG
+## 5. NEXT STEPS/BACKLOG
 A few items that would require further tweaking or I had hoped to complete as part of initial scope but ran out of time:
 1. Additional singular tests
 2. Split out dbt tasks within Airflow dag to reflect dependencies of models
