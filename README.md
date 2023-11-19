@@ -43,7 +43,11 @@ The replication is incremental as pictured in this Airbyte screenshot, using the
 2. An additional singular test was created called discount_range and is stored within the tests folder. As the discount column in the order detail table should only be a value within 0 and 1 (represents the percent discount given in decimal form), the test looks for any records where the discount record is below 0 or above 1.
 
 ### DEV and PROD runs
-There are 2 Snowflake databases - a PROD and a DEV. All dbt models have the following jinja snippet in their yml files so that the tables are written to either the PROD or DEV database depending on what the target is set as in the profiles yml file.
+There are 2 Snowflake databases - a PROD and a DEV. 
+
+![plot](./readme_images/dec_northwind_snowflake_databases.png)
+
+All dbt models have the following jinja snippet in their yml files so that the tables are written to either the PROD or DEV database depending on what the target is set as in the profiles yml file.
 
 ![plot](./readme_images/dec_northwind_dev_prod.png)
 
