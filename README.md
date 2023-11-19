@@ -26,7 +26,7 @@ This is an ELT project for retail data.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4 Orchestration using Airflow](#orchestration-using-airflow)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Worflow Notifications](#workflow-notifications)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Workflow Notifications](#workflow-notifications)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.5 Data Visualization using Preset](#data-visualization-using-preset)
 
