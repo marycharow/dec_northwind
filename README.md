@@ -40,7 +40,7 @@ Create an ELT pipeline moving data from the sample <a href="https://www.postgres
 
 **Figure** : Project solution architecture
 
-![plot](./readme_images/dec_northwind_solution_architecture.png)
+![plot](./readme_images/dec_northwind_solution_architecture2.png)
 
 ## DIMENSIONAL MODEL
 The final curated tables in Snowflake are the following:
