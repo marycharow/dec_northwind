@@ -11,7 +11,8 @@ dim_supplier as (
 ),
 
 dim_customer as (
-    select * from {{ ref('dim_customer') }}
+        select * 
+                        from {{ ref('dim_customer') }}
 )
 
 select
