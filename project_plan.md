@@ -20,7 +20,7 @@ I will be using the Northwind database: https://github.com/pthom/northwind_psql
 In progress: ERD to be added.
 
 ## Solution Architecture
-![plot](./dec_northwind_solution_architecture.png)
+![plot](./readme_images/dec_northwind_solution_architecture.png)
 
 ## Breakdown of Tasks
 I will be using Trello to break down required tasks and track progress.
