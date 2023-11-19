@@ -1,4 +1,3 @@
-# dec_northwind
 Welcome to my final course project for <a href="https://dataengineercamp.com/">Data Engineer Camp</a>.
 
 This is an ELT project for retail data.
