@@ -23,3 +23,9 @@ from fact_order
 left join dim_product on fact_order.product_key = dim_product.product_key
 left join dim_supplier on dim_product.supplier_key = dim_supplier.supplier_key
 left join dim_customer on fact_order.customer_key = dim_customer.customer_key
+
+
+
+
+
+
