@@ -33,7 +33,7 @@ This is an ELT project for retail data.
 [5. Next Steps](#next-steps)
 
 ## OBJECTIVE
-Create an ELT pipeline moving data from the sample <a href="https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database">Northwind PostgreSQL database</a> to Snowflake where we curate tables that can be used for reporting and insights.
+Create an ELT pipeline moving data from the sample <a href="https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database">Northwind PostgreSQL database</a> to Snowflake where curated tables can be used for reporting and insights.
 
 ## SOLUTION ARCHITECTURE
 
