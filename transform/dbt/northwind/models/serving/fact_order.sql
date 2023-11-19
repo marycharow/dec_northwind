@@ -77,4 +77,3 @@ and stg_order.order_date < coalesce(dim_customer_tier.valid_to, cast('2999-01-01
 {% if is_incremental() %}
     where stg_order_detail.updated_at > (select max(updated_at) from {{ this }})
 {% endif %}
-
