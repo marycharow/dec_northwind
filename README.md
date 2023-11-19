@@ -25,9 +25,11 @@ This is an ELT project for retail data.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4 Orchestration using Airflow](#orchestration-using-airflow)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Workflow Notifications](#workflow-notifications)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Pipeline Notifications](#pipeline-notifications)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.5 Data Visualization using Preset](#data-visualization-using-preset)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.5 Github Actions](#github-actions)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.6 Data Visualization using Preset](#data-visualization-using-preset)
 
 [5. Next Steps](#next-steps)
 
@@ -106,7 +108,7 @@ This required the following setup in Airflow:
 1. An Airbyte connection
 2. Airflow variables to store the Snowflake dbt user login credentials
 
-#### Workflow Notifications
+#### Pipeline Notifications
 An attempt to add Slack notifications for the Airflow dag runs was also made.
 
 This required the following setup:
@@ -119,6 +121,13 @@ This required the following setup:
 **Figure**: Sample successful Slack notifications of Airflow dag
 
 ![plot](./readme_images/dec_northwind_slack.png)
+
+### Github Actions
+A Github workflow called "linter" was created with the intention of flagging improperly formatted SQL code using <a href="https://github.com/sqlfluff">sqlfluff</a> within the dbt/models directory of this project. Checks will fail on a pull request to the main branch that contains imporperly formatted code, as seen below:
+
+**Figure**: Failed workflow checks on pull request
+
+![plot](./readme_images/dec_northwind_sqlfluff_failures.png)
 
 ### Data Visualization using Preset
 A Preset dashboard was created to visualize key metrics. 
