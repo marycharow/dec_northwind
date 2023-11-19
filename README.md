@@ -14,15 +14,15 @@ The final curated tables in Snowflake are the following:
 In addition to these tables, a **one big table** is also created to be used for Preset visualization.
 
 ## 4. APPROACH
-### Hosting Northwind database on RDS
+### 4.1 Hosting Northwind database on RDS
 An RDS instance as shown was created to host the PostgreSQL database.
 
 ![plot](./readme_images/dec_northwind_rds.png)
 
-### Enabling CDC on RDS database
+### 4.2 Enabling CDC on RDS database
 Because the Northwind datasets did not have a natural cursor field, CDC was enabled to allow for incremental syncing. This initially caused some hiccups as enabling replication on an RDS database requires slightly different commands, as found <a href="https://stackoverflow.com/questions/61912680/postgres-aws-rds-failed-to-create-replication-users">here</a> - thanks to the instructors for helping troubleshoot this!
 
-### Data Ingestion using Airbyte
+### 4.3 Data Ingestion using Airbyte
 Airbyte was used to ingest data from PostgreSQL to Snowflake warehouse.
 
 The **Source** was the RDS PostgreSQL instance containing the Northwind database.
@@ -33,16 +33,16 @@ The replication is incremental as pictured in this Airbyte screenshot, using the
 
 ![plot](./readme_images/dec_northwind_airbyte.png)
 
-### Data Curation
+### 4.4 Data Curation
 1. Airbyte syncs raw tables to a database in the Snowflake account
 2. dbt models create staging, snapshot, and serving tables. 
 3. The snapshot table of stg_customer_customer_tier is used to implement dim_customer_tier as a slow-changing dimension table. The idea here was that we would like a record for each time a customer changes between Basic and Premium tier so that we always know under what tier was a specific order made. It also allows for analysis on tier migration behaviour (e.g. how long do customers take on average to upgrade to Premium, how long do they stay as Premium).
 
-### Data Tests
+### 4.5 Data Tests
 1. Each serving table has dbt tests defined in the model's yml file. The unique, not_null, and accepted_values tests were used in various models.
 2. An additional singular test was created called discount_range and is stored within the tests folder. As the discount column in the order detail table should only be a value within 0 and 1 (represents the percent discount given in decimal form), the test looks for any records where the discount record is below 0 or above 1.
 
-### DEV and PROD runs
+### 4.6 DEV and PROD runs
 There are 2 Snowflake databases - a PROD and a DEV. 
 
 ![plot](./readme_images/dec_northwind_snowflake_databases.png)
@@ -51,13 +51,24 @@ All dbt models have the following jinja snippet in their yml files so that the t
 
 ![plot](./readme_images/dec_northwind_dev_prod.png)
 
-### Workflows
+### 4.7 Workflows
 Airflow was used to orchestrate the Airbyte sync and dbt project run.
 
 This required the following setup in Airflow:
 1. An Airbyte connection
 2. Airflow variables to store the Snowflake dbt user login credentials
 
+#### 4.8 Workflow Notification
+An attempt to add Slack notifications for the Airflow dag runs was also made.
+
+This required the following setup:
+1. Creation of a new Slack app in the 2023-07 Data Engineer Camp workspace
+2. Creation of a new private Slack channel "#airflow-notification-mc" where the notification messages would be sent
+3. Enabling webhooks and creation of a new webhook in the 2023-07 Data Engineer Camp workspace
+4. An Airflow connection for Slack with HTTP connection with the password for the webhook created in the previous step
+5. Import and usage of the SlackWebhookOperator to create a new dag task which sends a custom message to the Slack channel created in step 2 - in this case the message was "ELT started" and this task is first in the dag
+
+![plot](./readme_images/dec_northwind_slack.png)
 
 ### VISUALIZATION
 A Preset dashboard was created to visualize key metrics. 
