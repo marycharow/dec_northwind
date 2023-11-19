@@ -7,12 +7,14 @@ Create an ELT pipeline moving data from the sample <a href="https://www.postgres
 ## 2. SOLUTION ARCHITECTURE
 
 **Figure** : Project solution architecture
+
 ![plot](./readme_images/dec_northwind_solution_architecture.png)
 
 ## 3. DIMENSIONAL MODEL
 The final curated tables in Snowflake are the following:
 
 **Figure**: Project entity relationship diagram
+
 ![plot](./readme_images/dec_northwind_erd.png)
 
 In addition to these tables, a **one big table** is also created to be used for Preset visualization.
@@ -22,6 +24,7 @@ In addition to these tables, a **one big table** is also created to be used for 
 An RDS instance as shown was created to host the PostgreSQL database.
 
 **Figure**: RDS database
+
 ![plot](./readme_images/dec_northwind_rds.png)
 
 #### 4.1.1 Enabling CDC on RDS database
@@ -37,6 +40,7 @@ The **Destination** was a Snowflake database named AIRBYTE_DATABASE.
 The replication is incremental as pictured in this Airbyte screenshot, using the _ab_cdc_lsn field created by enabling CDC.
 
 **Figure**: Airbyte connection
+
 ![plot](./readme_images/dec_northwind_airbyte.png)
 
 ### 4.3 Data Curation
@@ -52,11 +56,13 @@ The replication is incremental as pictured in this Airbyte screenshot, using the
 There are 2 Snowflake databases - a PROD and a DEV. 
 
 **Figure**: Snowflake databases
+
 ![plot](./readme_images/dec_northwind_snowflake_databases.png)
 
 All dbt models have the following jinja snippet in their yml files so that the tables are written to either the PROD or DEV database depending on what the target is set as in the profiles yml file.
 
 **Figure**: Jinja script allowing for dynamic toggle between PROD and DEV databases
+
 ![plot](./readme_images/dec_northwind_dev_prod.png)
 
 ### 4.4 Orchestration
@@ -77,12 +83,14 @@ This required the following setup:
 5. Import and usage of the SlackWebhookOperator to create a new dag task which sends a custom message to the Slack channel created in step 2 - in this case the message was "ELT started" and this task is first in the dag
    
 **Figure**: Sample successful Slack notifications of Airflow dag
+
 ![plot](./readme_images/dec_northwind_slack.png)
 
 ### 4.5 Visualization
 A Preset dashboard was created to visualize key metrics. 
 
 **Figure**: Preset dashboard
+
 ![plot](./readme_images/dec_northwind_preset.png)
 
 This required the creation of some metrics created in the semantic layer including: 
