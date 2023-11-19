@@ -135,7 +135,7 @@ This required the creation of some metrics created in the semantic layer includi
 - total units sold
 - percent of orders sold on discount
 
-## Next Steps
+## NEXT STEPS
 A few items that would require further tweaking or I had hoped to complete as part of initial scope but ran out of time:
 1. Additional singular tests
 2. Split out dbt tasks within Airflow dag to reflect dependencies of models
