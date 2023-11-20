@@ -149,4 +149,5 @@ A few items that would require further tweaking or I had hoped to complete as pa
 1. Additional singular tests
 2. Split out dbt tasks within Airflow dag to reflect dependencies of models
 3. More complex Slack notifications such as failure notifications that specify which task failed and log details
-4. Additional automated tests with more sophisticated github workflows
+4. Additional automated tests with more sophisticated github workflows for continuous integration
+5. Continuous deployment
